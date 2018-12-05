@@ -70,7 +70,43 @@ public class storeBeatle {
         }
         return list;
     }
+    
+     public List hqlSelect(String hql) {
+        Query query=session.createQuery(hql);
+        query.setFirstResult(5);
+        query.setMaxResults(20);
+        return query.list();
+    }
 
+    public int hqlInsert(String hql) {
+        Query q=session.createQuery(hql);
+        int status=q.executeUpdate();
+        System.out.println(status);
+        t.commit();
+        return status;
+    }
+
+    public void update(Map m){
+        TBeatles temp = new TBeatles();
+        Set set = m.entrySet();
+        Iterator i = set.iterator();
+        while(i.hasNext()){
+            Map.Entry entry=(Map.Entry)i.next();
+            char a = entry.getKey().toString().charAt(0);
+            switch(a){
+                case 'a' : temp.setAlbumName(entry.getValue().toString()); break;
+                case 's' : temp.setSp(Integer.parseInt(entry.getValue().toString())); break;
+                case 'e' : temp.setEp(Integer.parseInt(entry.getValue().toString())); break;
+                case 'l' : temp.setLp(Integer.parseInt(entry.getValue().toString())); break;
+                case 'y' : temp.setRelYear(Integer.parseInt(entry.getValue().toString())); break;
+                case 'd' : temp.setRelDate((java.sql.Date)entry.getValue()); break;
+                default : System.out.println("Error");
+            }
+        }
+        session.update(temp);
+        t.commit();
+        t=null;
+    }
 
 
     public void connClose(){
