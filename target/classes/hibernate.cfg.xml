@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 5.3//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-5.3.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="hbm2ddl.auto">update</property>
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <property name="connection.url">jdbc:oracle:thin:@orcl11g.thbs.india.com:1521:orac11g</property>
+        <property name="connection.username">vasuki_g</property>
+        <property name="connection.password">thbs123</property>
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+
+        <mapping class="com.beatles.TBeatles"/>
+    </session-factory>
+</hibernate-configuration>
