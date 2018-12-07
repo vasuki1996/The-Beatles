@@ -13,5 +13,6 @@
         <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
 
         <mapping class="com.beatles.TBeatles"/>
+        <mapping class="com.beatles.TUsers"/>
     </session-factory>
 </hibernate-configuration>
